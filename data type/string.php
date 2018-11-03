@@ -114,6 +114,44 @@ echo"$people->john then said hello to $people->jane.".PHP_EOL;
 echo"$people->john's wife greeted $people->robert.".PHP_EOL;
 echo "$people->rebert greeted the two $people->smiths.";
 ?>
+
+//复杂花括号语法
+<?php
+error_reporting(E_ALL);
+$great='fantastic';
+
+//无效，输出：This is {fantastic}
+    echo"This is { $gret}";
+// 有效，输出： This is fantastic
+    echo"This is {$great}";
+    echo"This is ${great}";
+// 有效
+    echo"This square is {$square->width}00 centimeters broad.";
+//有效，只有通过花括号语法才能正确解析带引号的键名
+    echo "This works: {$arr['key']}";
+ //有效
+    echo "This works:{$arr[4][3]}";
+    echo "This works:{$arr['foo'][3]}";
+  //有效
+    echo"This works:". $arr['foo'][3];
+    echo"This works too:{$obj->values[3]->name}";
+    echo"This is the value of the var named $name:{${$name}}";
+    echo"This is the value of the var named by the return of getname() {${getname()}}";
+    echo"This is the value of the var named by the return of \object->getname():{${$object->gename()}}";
+    ?>
+//字符串当数组用
+<?php
+//取得字符串的第一个字节
+    $str='This is a test';
+    $first=$str[0];
+ //取得字符串的第三个字节
+    $third=$str[2];
+//取得字符串的最后一个字节
+    $last=$str[strlen($str)-1];
+?>
+
+
+
 /**
  * Created by PhpStorm.
  * User: YCH
