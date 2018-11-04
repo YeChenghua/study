@@ -61,6 +61,96 @@ $arr["X"]=42;
 unset($arr[5]);
 unset($arr);
 ?>
+
+<?php
+$array=array(1,2,3,4,5);
+print_r($array);
+
+foreach($array as $i=>$value){
+    unset($array[$i]);
+}
+print_r($array);
+
+//重新索引
+$array=array_values($array);
+$array[]=7;
+print_r($array);
+?>
+
+//不用给健名为常亮或变量的加上引号
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors',true);
+ini_set('htmil_errors',false);
+
+$array=array(1,2);
+$count=count($array);
+for($i=0;$i<$count;$i++){
+    echo"\nChecking $i:\n";
+    echo"Bad:".$array[$i]."\n";
+    echo"Good".$array[$i]."\n";
+}
+?>
+
+<?php
+$error_descriptions[E_ERROR]="A fatal error has occured";
+$error_descriptions[E_WARNING]="PHP issued a warning";
+$error_descriptions[E_NOTICE]="Thi is a information notice";
+?>
+
+//在循环中改变单元
+<?php
+$colors=array('red','blue','green','yellow');
+foreach($colors as $color) {
+    $color = strtoupper($color);
+}
+unset($color);
+foreach($colors as $key=>$color){
+    $colors[$key]=strtoupper($color);
+}
+print_r($colors);
+?>
+
+//填充数组
+<?php
+$handle=opendir('.');
+while(false!==($file=readdir($handle))){
+    $file[]=$file;
+}
+closedir($handle);
+?>
+
+<?php
+$fruits = array (
+    "fruits"  => array( "a" => "orange",
+    "b" => "banana",
+    "c" => "apple"
+    ),
+    "numbers" => array ( 1,
+        2,
+        3,
+        4,
+        5,
+        6
+    ),
+    "holes"   => array (      "first",
+        5 => "second",
+        "third"
+    )
+);
+echo $fruits["holes"][5];
+echo $fruits["fruits"]["a"];
+unset($fruits["holes"][0]);
+$juices["apple"]["green"] = "good";
+?>
+
+<?php
+$arr1 = array(2, 3);
+$arr2 = $arr1;
+$arr2[] = 4;
+$arr3 = &$arr1;
+$arr3[] = 4;
+?>
 /**
  * Created by PhpStorm.
  * User: YCH
